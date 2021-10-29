@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/drawable/bg_home_btn.xml" value="0.2991666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/drawable/ic_back.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/drawable/ic_baseline_replay.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/drawable/ic_forward.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/drawable/ic_home.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/drawable/ic_hotc_icon.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/drawable/ic_polygon_1.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/drawable/play.xml" value="0.33541666666666664" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/activity_home_screen.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/activity_test.xml" value="0.1765625" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/app_bar.xml" value="0.18" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_gallary_item_details.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_home_screen.xml" value="0.14" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_image.xml" value="0.31495098039215685" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_list_videos.xml" value="0.67" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_photos.xml" value="0.31495098039215685" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_photos_category_screen.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_single_image.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_single_videos.xml" value="0.2973856209150327" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/fragment_videos.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/grid_item_gallary_item.xml" value="0.1765625" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/home_screen.xml" value="0.21037581699346405" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/list_item_image.xml" value="0.31495098039215685" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/list_item_photos.xml" value="0.75" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/list_item_photos_item_gallary.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/list_item_subfolders.xml" value="0.31495098039215685" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/list_item_video_list.xml" value="0.2973856209150327" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/list_item_videos.xml" value="0.5" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/HotcApp/app/src/main/res/layout/vod_controller.xml" value="0.2973856209150327" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
