@@ -14,29 +14,12 @@ import com.example.hotcapp.common.Constants
 import com.example.hotcapp.presentation.adapter.PhotoAdapter
 import com.example.hotcapp.presentation.model.PhotoModel
 import com.example.hotcapp.presentation.view.HomeActivity
-import com.example.hotcapp.presentation.view.HomeFragment
 import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.fragment_photos.*
 import java.io.File
 
 class PhotosFragment: Fragment()  {
-    private lateinit var PATH: String
-    companion object {
-        private const val ARG_PATH: String = "HOTC"
-        fun build(block: Builder.() -> Unit) = Builder().apply(block).build()
-    }
 
-    class Builder {
-        var path: String = ""
-
-        fun build(): HomeFragment {
-            val fragment = HomeFragment()
-            val args = Bundle()
-            args.putString(ARG_PATH, path)
-            fragment.arguments = args;
-            return fragment
-        }
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,46 +49,54 @@ class PhotosFragment: Fragment()  {
 
     private fun loadData() {
         try {
-            val nameFolder = arguments?.getString(Constants.FOLDER_NAME,"")
+            val nameFolder = arguments?.getString(Constants.FOLDER_NAME, "")
 
             val fileName = nameFolder?.let { (activity as HomeActivity).getFilesFromPath(it) }!!
             //Getting Main Folder Under HOTC
             val file = fileName?.get(0)
             file.listFiles()?.filter {
-                it.name == Constants.BACKGROUND
+                it.name == Constants.PHOTO
             }?.mapNotNull {
                 it.listFiles()!!.forEach {
-                    if (it.name.trim() == Constants.PHOTO){
-                        Glide.with(requireContext()).load(it.listFiles()!!.get(0).absoluteFile).into(bgImg)
+                    if (it.name.trim() == Constants.BACKGROUND) {
+                        Glide.with(requireContext()).load(it.listFiles()!!.get(0).absoluteFile)
+                            .into(bgImg)
                     }
                 }
             }
             Constants.folderName = file?.path
             val mainFile = file?.listFiles()?.filter {
-                it.name.trim() == Constants.BACKGROUND
+                it.name.trim() == Constants.PHOTO
             }?.mapNotNull {
-                it.listFiles().filter {
-                    it.name.trim() == Constants.PHOTOBG
-                }.mapNotNull {
-                    (rvPhotos.adapter as PhotoAdapter).photoList= getPhotoModelsFromFiles(it.listFiles()!!.toList().sortedBy { it.name })
-
-                }
-
+                (rvPhotos.adapter as PhotoAdapter).photoList =
+                    getPhotoModelsFromFiles(it.listFiles()!!.toList().sortedBy { it.name }.filter { it.name != Constants.BACKGROUND })
 
             }
 
 
         }catch (e:Exception){
-//            Toast.makeText(context,e.message,Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,e.message,Toast.LENGTH_SHORT).show()
         }
 
     }
     fun getPhotoModelsFromFiles(files: List<File>): List<PhotoModel> {
         return files.map {
-            val myBitmap = it.listFiles()?.get(0)?.absolutePath!!
+            var fileList:MutableList<File> = ArrayList<File>()
+            it.listFiles()!!.forEach {
+                if (it.absolutePath.contains(".jpg") || it.absolutePath.contains(".png")){
+                    fileList.add(it)
+                }
+            }
+
+            var myBitmap = ""
+            if (fileList.isNotEmpty()){
+                myBitmap = fileList.get(0).absolutePath
+            }
 
             PhotoModel(it.name,myBitmap)
+
+
+
         }
     }
-
 }

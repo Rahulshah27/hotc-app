@@ -12,8 +12,7 @@ import com.example.hotcapp.presentation.view.HomeActivity
 import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.fragment_single_image.*
 
-class SingleImageFragment : Fragment() {
-
+class SingleImageFragment  : Fragment() {
 
 
     override fun onCreateView(
@@ -30,7 +29,8 @@ class SingleImageFragment : Fragment() {
             (activity as HomeActivity).onBackPressed()
 
         }
+
         tvName.text = null
-        Glide.with(requireContext()).load(Constants.imageSelected!!.image).into(ivSingleImage)
+        Glide.with(requireContext()).load(Constants.imageSelected!!.image).into(ivImg)
     }
 }

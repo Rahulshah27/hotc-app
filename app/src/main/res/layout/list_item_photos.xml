@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/_2sdp"
     android:layout_width="@dimen/_100sdp"
     android:layout_height="@dimen/_120sdp">
 
@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        android:padding="@dimen/_2sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bg_mehendi" />
@@ -20,8 +21,10 @@
         style="@style/text_style"
         android:textStyle="bold"
         android:id="@+id/tvName"
-        android:textSize="28sp"
+        android:textSize="@dimen/_11sdp"
+        android:fontFamily="@font/futura_medium_bt"
         android:text="MEHENDI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
 </androidx.cardview.widget.CardView>

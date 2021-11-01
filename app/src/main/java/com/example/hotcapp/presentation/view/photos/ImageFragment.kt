@@ -52,9 +52,10 @@ class ImageFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun imageClicked(imageModel: ImageModel) {
+    private fun imageClicked(imageModel: ImageModel,pos:Int) {
         Constants.imageSelected = imageModel
-        (activity as HomeActivity).addReplaceFragment(SingleImageFragment(),2,Constants.folderName!!)
+        Constants.slidePosition = pos
+        (activity as HomeActivity).addReplaceFragment(SlideShowFragment(),2,Constants.folderName!!)
     }
 
     private fun loadData() {

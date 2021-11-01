@@ -7,7 +7,7 @@ import com.example.hotcapp.presentation.model.VideoModel
 import java.io.File
 
 object Constants {
-
+    var slidePosition: Int?=null
     var videoSelected: ThumbnailModel?=null
     var videoFolderSelected: VideoModel?=null
     var imageSelected: ImageModel?=null

@@ -60,12 +60,8 @@ class SingleVideoFragment : Fragment() {
                             .build()
                             .also { exoPlayer ->
                                 videoPlayer.player = exoPlayer
-
                                 val mediaItem = MediaItem.fromUri(it.absolutePath)
                                 exoPlayer.setMediaItem(mediaItem)
-
-
-
                             }
 
 
