@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.hotcapp.R
 import com.example.hotcapp.common.Constants
 import com.example.hotcapp.presentation.model.FileModel
@@ -43,7 +44,11 @@ class HomeFragment: Fragment() {
             val fileName = getFileModelsFromFiles(getFilesFromPath(PATH))
 
             tvFolderName.text = fileName[0].name
-
+            val bgFile = getFilesFromPath(PATH).get(0).listFiles()!!.filter {
+                it.name == Constants.BACKGROUND
+            }.mapNotNull {
+                Glide.with(requireContext()).load(it.listFiles()!!.get(0).absolutePath).into(ivBg)
+            }
 
         }.onFailure {
             Toast.makeText(context,it.message,Toast.LENGTH_SHORT).show()

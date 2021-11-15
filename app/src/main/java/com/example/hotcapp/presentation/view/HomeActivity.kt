@@ -8,6 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.hotcapp.R
 import com.example.hotcapp.common.Constants
 import com.example.hotcapp.presentation.model.FileModel
@@ -71,10 +72,20 @@ class HomeActivity : AppCompatActivity() {
         when (addOrReplace) {
             1 -> {
 
-                transaction.replace(nav_fragment.id, fragment!!)
-                manager.popBackStack()
-                transaction.commit()
+                val bundle = Bundle()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    bundle.putString(filePaths,Environment.getStorageDirectory().path+filePaths)
+                }else{
+                    bundle.putString(filePaths,"storage/$filePaths")
+                }
 
+                fragment?.arguments = bundle
+                transaction.replace(nav_fragment.id, fragment!!)
+                manager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+
+//                Toast.makeText(this,supportFragmentManager.backStackEntryCount.toString(),Toast.LENGTH_SHORT).show()
+
+                transaction.commit()
             }
             2 -> {
 

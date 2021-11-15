@@ -2,9 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    android:background="@drawable/home_page">
-
+    android:background="@color/splash_color"
+    android:id="@+id/main">
 
     <FrameLayout
         android:layout_width="match_parent"

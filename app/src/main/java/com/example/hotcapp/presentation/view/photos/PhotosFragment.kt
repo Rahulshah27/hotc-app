@@ -14,6 +14,7 @@ import com.example.hotcapp.common.Constants
 import com.example.hotcapp.presentation.adapter.PhotoAdapter
 import com.example.hotcapp.presentation.model.PhotoModel
 import com.example.hotcapp.presentation.view.HomeActivity
+import com.example.hotcapp.presentation.view.HomeFragment
 import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.fragment_photos.*
 import java.io.File
@@ -33,6 +34,9 @@ class PhotosFragment: Fragment()  {
 
         ivArrowBack.setOnClickListener {
             (activity as HomeActivity).onBackPressed()
+        }
+        ivHome.setOnClickListener {
+            (activity as HomeActivity).addReplaceFragment(HomeFragment(),1,Constants.FOLDER_NAME)
         }
         rvPhotos.adapter = PhotoAdapter(::itemClicked)
         rvPhotos.setHasFixedSize(true)

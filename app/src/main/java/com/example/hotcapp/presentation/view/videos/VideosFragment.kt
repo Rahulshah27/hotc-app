@@ -14,6 +14,7 @@ import com.example.hotcapp.common.Constants
 import com.example.hotcapp.presentation.adapter.VideoAdapter
 import com.example.hotcapp.presentation.model.VideoModel
 import com.example.hotcapp.presentation.view.HomeActivity
+import com.example.hotcapp.presentation.view.HomeFragment
 import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.fragment_videos.*
 import java.io.File
@@ -32,6 +33,9 @@ class VideosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         ivArrowBack.setOnClickListener {
             (activity as HomeActivity).onBackPressed()
+        }
+        ivHome.setOnClickListener {
+            (activity as HomeActivity).addReplaceFragment(HomeFragment(),1,Constants.FOLDER_NAME)
         }
         rvVideos.adapter = VideoAdapter(::itemClicked)
         rvVideos.setHasFixedSize(true)

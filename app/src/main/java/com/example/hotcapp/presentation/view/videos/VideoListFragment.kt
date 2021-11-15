@@ -15,17 +15,17 @@ import com.example.hotcapp.common.Constants
 import com.example.hotcapp.presentation.adapter.VideoListAdapter
 import com.example.hotcapp.presentation.model.ThumbnailModel
 import com.example.hotcapp.presentation.view.HomeActivity
+import com.example.hotcapp.presentation.view.HomeFragment
 import com.example.hotcapp.presentation.viewmodel.VideoListViewModel
 import kotlinx.android.synthetic.main.app_bar.*
-import kotlinx.android.synthetic.main.fragment_list_videos.*
-import kotlinx.android.synthetic.main.list_item_video_list.*
+
+import kotlinx.android.synthetic.main.fragment_list_videos.bgImg
+import kotlinx.android.synthetic.main.fragment_list_videos.rvVideos
+
 
 class VideoListFragment : Fragment() {
 
-
-
     private var thumbNailViewModel: VideoListViewModel?=null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,12 +42,16 @@ class VideoListFragment : Fragment() {
         loadData()
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun initView() {
         tvName.text = Constants.videoFolderSelected?.name
         ivArrowBack.setOnClickListener {
             (activity as HomeActivity).onBackPressed()
         }
-
+        ivHome.setOnClickListener {
+            (activity as HomeActivity).addReplaceFragment(HomeFragment(),1,Constants.FOLDER_NAME)
+        }
+        Glide.with(requireContext()).load(Constants.VIDEOBACKGROUND).into(bgImg)
         rvVideos.adapter = VideoListAdapter(::videoClicked)
         rvVideos.setHasFixedSize(true)
 
@@ -63,20 +67,21 @@ class VideoListFragment : Fragment() {
     private fun loadData() {
         try {
             //For background
-            val listBg = (activity as HomeActivity).getFilesFromPath(Constants.folderName!!).filter {
+            val nameFolder = arguments?.getString(Constants.FOLDER_NAME,"")
+
+            val fileNames = nameFolder?.let { (activity as HomeActivity).getFilesFromPath(it) }
+            val file = fileNames?.get(0)
+
+            file?.listFiles()?.filter {
                 it.name == Constants.VIDEO
-            }.mapNotNull {f1->
-                f1.listFiles()!!.filter {
-                        f2->f2.name == Constants.BACKGROUND
-                }.mapNotNull {
-                        f3->
-                    f3.listFiles()!!.forEach {
-                        if (it.name.trim() == Constants.videoFolderSelected!!.name.trim()){
-                            Glide.with(requireContext()).load(it.listFiles()!!.get(0).absoluteFile).into(bgImg)
-                        }
+            }?.mapNotNull {
+                it.listFiles()!!.forEach {
+                    if (it.name.trim() == Constants.BACKGROUND){
+                        Glide.with(requireContext()).load(it.listFiles()!!.get(0).absoluteFile).into(bgImg)
                     }
                 }
             }
+
 
             //Video list thumbnails
             val fileName = (activity as HomeActivity).getFilesFromPath(Constants.folderName!!).filter {
@@ -86,17 +91,22 @@ class VideoListFragment : Fragment() {
                         f2->f2.name == Constants.videoFolderSelected!!.name
                 }.mapNotNull {
                         f3->
-                    thumbNailViewModel?.getVideoList(f3.listFiles()!!.toList().filter{ it.name != Constants.BACKGROUND })
+                    f3.listFiles()!!.filter {
+
+                        it.name == Constants.THUMBNAIL
+
+
+                    }.mapNotNull {
+
+                        thumbNailViewModel?.getVideoList(
+                            it.listFiles()!!.toList()
+                                .sortedBy { it.name })
+                    }
                 }
             }
-
-
-
             thumbNailViewModel?.videoList?.observe(viewLifecycleOwner,{
                 (rvVideos.adapter as VideoListAdapter).videoList = it
             })
-
-
 
         }catch (e:Exception){
             Toast.makeText(context,e.message, Toast.LENGTH_SHORT).show()

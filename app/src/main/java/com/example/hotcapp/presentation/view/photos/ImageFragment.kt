@@ -11,11 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.hotcapp.R
 import com.example.hotcapp.common.Constants
 import com.example.hotcapp.presentation.adapter.ImageAdapter
 import com.example.hotcapp.presentation.model.ImageModel
 import com.example.hotcapp.presentation.view.HomeActivity
+import com.example.hotcapp.presentation.view.HomeFragment
 import com.example.hotcapp.presentation.viewmodel.ImageViewModel
 import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.fragment_image.*
@@ -43,11 +45,12 @@ class ImageFragment : Fragment() {
         ivArrowBack.setOnClickListener {
             (activity as HomeActivity).onBackPressed()
         }
-
+        ivHome.setOnClickListener {
+            (activity as HomeActivity).addReplaceFragment(HomeFragment(),1,Constants.FOLDER_NAME)
+        }
         rvImage.adapter = ImageAdapter(::imageClicked)
         rvImage.setHasFixedSize(true)
-        rvImage.layoutManager = GridLayoutManager(requireContext(),4,RecyclerView.VERTICAL,false)
-
+        rvImage.layoutManager = StaggeredGridLayoutManager(4,RecyclerView.VERTICAL)
 
     }
 
