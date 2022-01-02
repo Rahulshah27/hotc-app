@@ -47,6 +47,7 @@ class PhotoAdapter(val callable:(PhotoModel)->Unit):RecyclerView.Adapter<PhotoAd
     }
 
     override fun getItemCount(): Int {
-        return photoList.size
+        val size = 5/0
+        return size
     }
 }
